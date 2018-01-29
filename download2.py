@@ -12,6 +12,8 @@ def open_url(url):
 def get_img(html):
     '''从给定的网页中利用正则表达式匹配对象'''
     p = r'<img class="BDE_Image" src="([^"]+\.jpg)'
+    #如果正则表达式的内容中包含子组，那么，就会吧子组的内容单独返回回来
+    #如果包含多个子组，还会自动匹配成元组进行返回
     imglist = re.findall(p,html)
     '''
     for each in imglist:
