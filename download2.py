@@ -11,12 +11,16 @@ def open_url(url):
 
 def get_img(html):
     '''从给定的网页中利用正则表达式匹配对象'''
-    p = r'<img class="BDE_Image" src="[^"]+\.jpg'
+    p = r'<img class="BDE_Image" src="([^"]+\.jpg)'
     imglist = re.findall(p,html)
-
+    '''
     for each in imglist:
         print(each)
-
+    '''
+    for each in imglist :
+        filename = each.split('/')[-1]
+        urllib.request.urlretrieve(each,filename,None)
+        
 
 if __name__ == '__main__':
     url = 'https://tieba.baidu.com/p/5393582905'
